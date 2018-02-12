@@ -14,13 +14,14 @@ router.get("/google", passport.authenticate("google", {
 
 // Callback Redirect Handler to exchage google code for Google profile details
 router.get("/google/redirect", passport.authenticate("google"), (req, res) => {
-
-    res.send(req.user);
+    // res.send(req.user);
+    res.redirect("/home")
 });
 
 // Auth logout
 router.get("/logout", (req, res) => {
-    res.send("logging out");
+    req.logout();
+    res.sendfile("/");
 })
 
 module.exports = router;

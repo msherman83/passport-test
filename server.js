@@ -1,5 +1,6 @@
 const express = require("express");
 const authRoutes = require("./routes/authroutes");
+const loggedinRoutes = require("./routes/loggedin-routes");
 const passport = require("passport");
 const passportSetup = require("./config/passport");
 const mongoose = require("mongoose");
@@ -9,6 +10,7 @@ const keys = require("./config/keys");
 const app = express();
 
 app.use(express.static("public"));
+
 
 // Intialize our cookie with a max age of 24 hours and a session key that we created.
 app.use(cookieSession({
@@ -32,11 +34,12 @@ if (process.env.MONGODB_URI) {
 
 // Auth Routes
 app.use("/auth", authRoutes);
+app.use("/home", loggedinRoutes);
 
 // Home route
 app.get("/", (req, res) => {
     res.render("index");
-})
+});
 
 
 app.listen(3000, () => {
