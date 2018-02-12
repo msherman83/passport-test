@@ -11,6 +11,7 @@ const app = express();
 
 app.use(express.static("public"));
 
+
 // Intialize our cookie with a max age of 24 hours and a session key that we created.
 app.use(cookieSession({
     maxAge: 24 * 60 * 60 * 1000,
@@ -39,7 +40,6 @@ app.use("/home", loggedinRoutes);
 app.get("/", (req, res) => {
     res.render("index");
 });
-
 
 
 app.listen(3000, () => {
