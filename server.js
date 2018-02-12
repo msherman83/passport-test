@@ -1,5 +1,6 @@
 const express = require("express");
 const authRoutes = require("./routes/authroutes");
+const loggedinRoutes = require("./routes/loggedin-routes");
 const passport = require("passport");
 const passportSetup = require("./config/passport");
 const mongoose = require("mongoose");
@@ -32,11 +33,13 @@ if (process.env.MONGODB_URI) {
 
 // Auth Routes
 app.use("/auth", authRoutes);
+app.use("/home", loggedinRoutes);
 
 // Home route
 app.get("/", (req, res) => {
     res.render("index");
-})
+});
+
 
 
 app.listen(3000, () => {
