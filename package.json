@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/msherman83/passport-test#readme",
   "dependencies": {
+    "cookie-session": "^2.0.0-beta.3",
     "express": "^4.16.2",
     "mongoose": "^5.0.4",
     "passport": "^0.4.0",
