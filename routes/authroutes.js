@@ -14,7 +14,8 @@ router.get("/google", passport.authenticate("google", {
 
 // Callback Redirect Handler to exchage google code for Google profile details
 router.get("/google/redirect", passport.authenticate("google"), (req, res) => {
-    res.send("You reached the CB URI");
+
+    res.send(req.user);
 });
 
 // Auth logout

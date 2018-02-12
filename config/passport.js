@@ -6,12 +6,12 @@ const User = require("../models/usermodel")
 
 // Takes an identifying piece from user to put into a cookie.
 passport.serializeUser((user, done) => {
-    done(null, user.googleID);
+    done(null, user.id);
 });
 
 // Take googleID and find user based on googleID when cookie comes back.
-passport.deserializeUser((googleID, done) => {
-    User.findById(goodleID).then((user) => {
+passport.deserializeUser((id, done) => {
+    User.findById(id).then((user) => {
         done(null, user);
     })
 });
